@@ -2,7 +2,6 @@
 // const base_url = 'http://api.weatherapi.com/v1/forecast.json';
 // const KEY = '4202b3fa59ea4adf832162138221110';
 
-
 // console.log('BEFORE ASYNC FUNCTION 1');
 // async function fetchCapital() {
 //     try {
@@ -22,17 +21,11 @@
 //     return data;
 // }
 
-
 // fetchWeather().then(data => console.log('INSIDE THEN 3', data)).catch(e => console.log(e));
 // console.log('AFTER ASYNC FUNCTION 4');
 
-
-
-
-
 // const base_url = 'http://api.weatherapi.com/v1/forecast.json';
 // const KEY = '4202b3fa59ea4adf832162138221110';
-
 
 // const obj = {
 //     base: 'http://api.weatherapi.com/v1/forecast.json',
@@ -58,7 +51,6 @@
 // obj._getCapital();
 // obj.getResponse().then(console.log);
 
-
 //  function fetchWeather() {
 //     const response =  fetch(`${base_url}?key=${KEY}&q=Lviv&days=7`);
 //     response.then(resp=> console.log(resp))
@@ -67,44 +59,35 @@
 // }
 // fetchWeather()
 
-
-
-
-
-const base_url = 'http://api.weatherapi.com/v1/forecast.json';
-const KEY = '4202b3fa59ea4adf832162138221110';
-
-
-
-
+const base_url = "http://api.weatherapi.com/v1/forecast.json";
+const KEY = "4202b3fa59ea4adf832162138221110";
 
 async function fetchWeather() {
-    const cities = ['warsaw', 'kabul', 'reykjavík', 'stockholm'];
-    const promises = cities.map(async (city) => {
-        const response = await fetch(`${base_url}?key=${KEY}&q=${city}&days=5`);
-        if(!response.ok){
-            throw new Error()
-        }
-    
-        return await response
-    })
-    console.log(promises);
-console.log(Promise);
-    const data = await Promise.allSettled(promises)
-    // console.log(data);
-    // data.forEach(item => {
-    //     if(item.status !== 'rejected'){
-    //         console.log(item.value.forecast);
-    //     }
-    // })
-    console.log(data);
+  const cities = ["warsaw", "kabul", "reykjavík", "stockholm"];
+  const promises = cities.map(async (city) => {
+    const response = await fetch(`${base_url}?key=${KEY}&q=${city}&days=5`);
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    return await response;
+  });
+  console.log(promises);
+  console.log(Promise);
+  const data = await Promise.allSettled(promises);
+  // console.log(data);
+  // data.forEach(item => {
+  //     if(item.status !== 'rejected'){
+  //         console.log(item.value.forecast);
+  //     }
+  // })
+  console.log(data);
 }
-fetchWeather()
+fetchWeather();
 
-
-const promise = new Promise((res,rej) => {
-    res(), rej()
-})
+const promise = new Promise((res, rej) => {
+  res(), rej();
+});
 // const warsaw = await fetch(`${base_url}?key=${KEY}&q=warsaw&days=5`);
 // const datawarsaw = await warsaw.json();
 // const kabul = await fetch(`${base_url}?key=${KEY}&q=kabul&days=5`);
